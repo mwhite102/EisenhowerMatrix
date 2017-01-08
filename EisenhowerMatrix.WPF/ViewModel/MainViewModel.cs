@@ -1,4 +1,4 @@
-using GalaSoft.MvvmLight;
+ using GalaSoft.MvvmLight;
 
 namespace EisenhowerMatrix.WPF.ViewModel
 {
