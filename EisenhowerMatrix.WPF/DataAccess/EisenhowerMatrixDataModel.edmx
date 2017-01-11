@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="EisenhowerMatrixModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Quadrant">
+          <Key>
+            <PropertyRef Name="QuadrantId" />
+          </Key>
+          <Property Name="QuadrantId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="QuadrantDescription" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedUTC" Type="datetime" Nullable="false" />
+          <Property Name="CompletedUTC" Type="datetime" />
+          <Property Name="QuadrantId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Task_Quadrant">
+          <End Role="Quadrant" Type="Self.Quadrant" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quadrant">
+              <PropertyRef Name="QuadrantId" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="QuadrantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EisenhowerMatrixModelStoreContainer">
+          <EntitySet Name="Quadrant" EntityType="Self.Quadrant" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Task_Quadrant" Association="Self.FK_Task_Quadrant">
+            <End Role="Quadrant" EntitySet="Quadrant" />
+            <End Role="Task" EntitySet="Task" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EisenhowerMatrixModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Quadrant">
+          <Key>
+            <PropertyRef Name="QuadrantId" />
+          </Key>
+          <Property Name="QuadrantId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="QuadrantDescription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Tasks" Relationship="Self.FK_Task_Quadrant" FromRole="Quadrant" ToRole="Task" />
+        </EntityType>
+        <EntityType Name="Task">
+          <Key>
+            <PropertyRef Name="TaskId" />
+          </Key>
+          <Property Name="TaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedUTC" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CompletedUTC" Type="DateTime" Precision="3" />
+          <Property Name="QuadrantId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Quadrant" Relationship="Self.FK_Task_Quadrant" FromRole="Task" ToRole="Quadrant" />
+        </EntityType>
+        <Association Name="FK_Task_Quadrant">
+          <End Role="Quadrant" Type="Self.Quadrant" Multiplicity="1" />
+          <End Role="Task" Type="Self.Task" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Quadrant">
+              <PropertyRef Name="QuadrantId" />
+            </Principal>
+            <Dependent Role="Task">
+              <PropertyRef Name="QuadrantId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EisenhowerMatrixEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Quadrants" EntityType="Self.Quadrant" />
+          <EntitySet Name="Tasks" EntityType="Self.Task" />
+          <AssociationSet Name="FK_Task_Quadrant" Association="Self.FK_Task_Quadrant">
+            <End Role="Quadrant" EntitySet="Quadrants" />
+            <End Role="Task" EntitySet="Tasks" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EisenhowerMatrixModelStoreContainer" CdmEntityContainer="EisenhowerMatrixEntities">
+          <EntitySetMapping Name="Quadrants">
+            <EntityTypeMapping TypeName="EisenhowerMatrixModel.Quadrant">
+              <MappingFragment StoreEntitySet="Quadrant">
+                <ScalarProperty Name="QuadrantId" ColumnName="QuadrantId" />
+                <ScalarProperty Name="QuadrantDescription" ColumnName="QuadrantDescription" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tasks">
+            <EntityTypeMapping TypeName="EisenhowerMatrixModel.Task">
+              <MappingFragment StoreEntitySet="Task">
+                <ScalarProperty Name="TaskId" ColumnName="TaskId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="CreatedUTC" ColumnName="CreatedUTC" />
+                <ScalarProperty Name="CompletedUTC" ColumnName="CompletedUTC" />
+                <ScalarProperty Name="QuadrantId" ColumnName="QuadrantId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
