@@ -1,4 +1,5 @@
- using GalaSoft.MvvmLight;
+using EisenhowerMatrix.WPF.DataAccess;
+using GalaSoft.MvvmLight;
 
 namespace EisenhowerMatrix.WPF.ViewModel
 {
@@ -16,10 +17,12 @@ namespace EisenhowerMatrix.WPF.ViewModel
     /// </summary>
     public class MainViewModel : ViewModelBase
     {
+        private IDataService _DataService;
+
         /// <summary>
         /// Initializes a new instance of the MainViewModel class.
         /// </summary>
-        public MainViewModel()
+        public MainViewModel(IDataService dataService)
         {
             ////if (IsInDesignMode)
             ////{
@@ -29,6 +32,8 @@ namespace EisenhowerMatrix.WPF.ViewModel
             ////{
             ////    // Code runs "for real"
             ////}
+
+            _DataService = dataService;
         }
     }
 }

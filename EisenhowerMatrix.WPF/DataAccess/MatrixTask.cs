@@ -12,9 +12,9 @@ namespace EisenhowerMatrix.WPF.DataAccess
     using System;
     using System.Collections.Generic;
     
-    public partial class Task
+    public partial class MatrixTask
     {
-        public int TaskId { get; set; }
+        public int MatrixTaskId { get; set; }
         public string Description { get; set; }
         public System.DateTime CreatedUTC { get; set; }
         public Nullable<System.DateTime> CompletedUTC { get; set; }

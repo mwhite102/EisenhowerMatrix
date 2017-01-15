@@ -12,6 +12,7 @@
   See http://www.galasoft.ch/mvvm
 */
 
+using EisenhowerMatrix.WPF.DataAccess;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -43,6 +44,8 @@ namespace EisenhowerMatrix.WPF.ViewModel
             ////}
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<IDataService, DataService>();
+            SimpleIoc.Default.Register<EisenhowerMatrixEntities>();
         }
 
         public MainViewModel Main

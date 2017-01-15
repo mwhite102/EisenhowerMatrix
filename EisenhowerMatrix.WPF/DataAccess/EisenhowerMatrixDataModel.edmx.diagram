@@ -5,9 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="df27de79c848484da7333eee3121e961" Name="Diagram1">
-        <EntityTypeShape EntityType="EisenhowerMatrixModel.Quadrant" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="EisenhowerMatrixModel.Task" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
-        <AssociationConnector Association="EisenhowerMatrixModel.FK_Task_Quadrant" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EisenhowerMatrixModel.Quadrant" Width="1.5" PointX="4.5" PointY="2.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EisenhowerMatrixModel.MatrixTask" Width="1.5" PointX="1.75" PointY="0.875" />
+        <AssociationConnector Association="EisenhowerMatrixModel.FK_MatrixTask_Quadrant" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

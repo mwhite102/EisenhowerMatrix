@@ -26,6 +26,6 @@ namespace EisenhowerMatrix.WPF.DataAccess
         }
     
         public virtual DbSet<Quadrant> Quadrants { get; set; }
-        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<MatrixTask> MatrixTasks { get; set; }
     }
 }

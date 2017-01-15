@@ -101,6 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataAccess\DataService.cs" />
     <Compile Include="DataAccess\EisenhowerMatrixDataModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -116,10 +117,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EisenhowerMatrixDataModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Quadrant.cs">
+    <Compile Include="DataAccess\IDataService.cs" />
+    <Compile Include="DataAccess\MatrixTask.cs">
       <DependentUpon>EisenhowerMatrixDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="DataAccess\Task.cs">
+    <Compile Include="DataAccess\Quadrant.cs">
       <DependentUpon>EisenhowerMatrixDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="EisenhowerMatrixDataSet.Designer.cs">

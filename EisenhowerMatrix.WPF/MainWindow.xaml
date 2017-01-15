@@ -8,11 +8,8 @@
         mc:Ignorable="d"
         Title="Eisenhower Matrix"
         Height="800"
-        Width="800">
-    
-    <Window.DataContext>
-        DataContext="{Binding Source={StaticResource Locator}, Path=MainViewModel}"
-    </Window.DataContext>
+        Width="800"
+        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
     
     <Grid>
         <Grid.RowDefinitions>
