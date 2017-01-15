@@ -124,11 +124,6 @@
     <Compile Include="DataAccess\Quadrant.cs">
       <DependentUpon>EisenhowerMatrixDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="EisenhowerMatrixDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>EisenhowerMatrixDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="UserControls\Matrix.xaml.cs">
       <DependentUpon>Matrix.xaml</DependentUpon>
     </Compile>
@@ -182,17 +177,6 @@
     </EntityDeploy>
     <None Include="DataAccess\EisenhowerMatrixDataModel.edmx.diagram">
       <DependentUpon>EisenhowerMatrixDataModel.edmx</DependentUpon>
-    </None>
-    <None Include="EisenhowerMatrixDataSet.xsc">
-      <DependentUpon>EisenhowerMatrixDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="EisenhowerMatrixDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>EisenhowerMatrixDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="EisenhowerMatrixDataSet.xss">
-      <DependentUpon>EisenhowerMatrixDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
