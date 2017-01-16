@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EisenhowerMatrix.WPF.UserControls"
-             xmlns:data="clr-namespace:EisenhowerMatrix.WPF.DataAccess"
+             xmlns:models="clr-namespace:EisenhowerMatrix.WPF.Models"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -19,7 +19,7 @@
         </Style>
 
         <!--DataTemplate for MatrixTask-->
-        <DataTemplate DataType="{x:Type data:MatrixTask}">
+        <DataTemplate DataType="{x:Type models:MatrixTaskModel}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

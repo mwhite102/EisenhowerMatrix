@@ -21,7 +21,8 @@
         <!--Main Menu-->
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="E_xit" />
+                <MenuItem Header="E_xit" 
+                          Command="{Binding ExitCommand}"/>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" />

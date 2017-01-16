@@ -72,18 +72,22 @@
         
         <!--Important / Urgent-->
         <local:MatrixBlock Grid.Column="1" 
-                           Grid.Row="1" />
+                           Grid.Row="1"
+                           DataContext="{Binding ImportantAndUrgentMatrixTask}"/>
         
         <!--Important / Not Urgent-->
         <local:MatrixBlock Grid.Column="2"
-                           Grid.Row="1" />
+                           Grid.Row="1"
+                           DataContext="{Binding ImportantAndNotUrgentMatrixTask}"/>
 
         <!--Not Important / Urgent-->
         <local:MatrixBlock Grid.Column="1"
-                           Grid.Row="2" />
+                           Grid.Row="2"
+                           DataContext="{Binding NotImportantAndUrgentMatrixTask}"/>
 
         <!--Not Important / Not Urgent-->
         <local:MatrixBlock Grid.Column="2"
-                           Grid.Row="2" />
+                           Grid.Row="2"
+                           DataContext="{Binding NotImportantAndNotUrgentMatrixTask}" />
     </Grid>
 </UserControl>

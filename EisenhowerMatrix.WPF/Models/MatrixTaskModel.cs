@@ -1,30 +1,49 @@
 ﻿using GalaSoft.MvvmLight;
 using System;
 using System.ComponentModel.DataAnnotations;
+using EisenhowerMatrix.WPF.DataAccess;
 
 namespace EisenhowerMatrix.WPF.Models
 {
     public class MatrixTaskModel : ObservableObject
     {
-        private int _MatrixTaskId;
+        private MatrixTask _MatrixTask;
+
+        /// <summary>
+        /// MatrixTaskModel Constructor
+        /// </summary>
+        /// <param name="matrixTask">The MatrixTask</param>
+        public MatrixTaskModel(MatrixTask matrixTask)
+        {
+            _MatrixTask = matrixTask;
+        }
+
+        /// <summary>
+        /// Gets the enclosed MatrixTask
+        /// </summary>
+        public MatrixTask MatrixTask
+        {
+            get
+            {
+                return _MatrixTask;
+            }
+        }
 
         /// <summary>
         /// Gets or sets the MatrixTaskId
         /// </summary>
         public int MatrixTaskId
         {
-            get { return _MatrixTaskId; }
+            get { return _MatrixTask.MatrixTaskId; }
             set
             {
-                if (_MatrixTaskId != value)
+                if (_MatrixTask.MatrixTaskId != value)
                 {
-                    _MatrixTaskId = value;
+                    _MatrixTask.MatrixTaskId = value;
                     RaisePropertyChanged();
                 }
             }
         }
-
-        private string _Description;
 
         /// <summary>
         /// Gets or sets the Description
@@ -32,66 +51,60 @@ namespace EisenhowerMatrix.WPF.Models
         [Required]
         public string Description
         {
-            get { return _Description; }
+            get { return _MatrixTask.Description; }
             set
             {
-                if (_Description != value)
+                if (_MatrixTask.Description != value)
                 {
-                    _Description = value;
+                    _MatrixTask.Description = value;
                     RaisePropertyChanged();
                 }
             }
         }
-
-        private DateTime _CreatedUTC;
 
         /// <summary>
         /// Gets or sets the CreatedUTC
         /// </summary>
         public DateTime CreatedUTC
         {
-            get { return _CreatedUTC; }
+            get { return _MatrixTask.CreatedUTC; }
             set
             {
-                if (_CreatedUTC != value)
+                if (_MatrixTask.CreatedUTC != value)
                 {
-                    _CreatedUTC = value;
+                    _MatrixTask.CreatedUTC = value;
                     RaisePropertyChanged();
                 }
             }
         }
-
-        private DateTime _CompletedUTC;
-
+        
         /// <summary>
         /// Gets or sets the CompletedUTC
         /// </summary>
-        public DateTime CompletedUTC
+        public DateTime? CompletedUTC
         {
-            get { return _CompletedUTC; }
+            get { return _MatrixTask.CompletedUTC; }
             set
             {
-                if (_CompletedUTC != value)
+                if (_MatrixTask.CompletedUTC != value)
                 {
-                    _CompletedUTC = value;
+                    _MatrixTask.CompletedUTC = value;
                     RaisePropertyChanged();
                 }
             }
         }
-
-        private int _QuadrantId;
-
+        
         /// <summary>
         /// Gets or sets the QuadrantId
         /// </summary>
         public int QuadrantId
         {
-            get { return _QuadrantId; }
+            get { return _MatrixTask.QuadrantId; }
             set
             {
-                if (_QuadrantId != value)
+                if (_MatrixTask.QuadrantId != value)
                 {
-                    _QuadrantId = value;
+                    _MatrixTask.QuadrantId = value;
                     RaisePropertyChanged();
                 }
             }
