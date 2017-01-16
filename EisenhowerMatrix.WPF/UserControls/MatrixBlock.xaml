@@ -4,6 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:EisenhowerMatrix.WPF.UserControls"
+             xmlns:data="clr-namespace:EisenhowerMatrix.WPF.DataAccess"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -17,12 +18,25 @@
                     Value="#999" />
         </Style>
 
+        <!--DataTemplate for MatrixTask-->
+        <DataTemplate DataType="{x:Type data:MatrixTask}">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <CheckBox Grid.Column="0"
+                          Margin="3" />
+                <TextBlock Grid.Column="1"
+                           Margin="3"
+                           Text="{Binding Description}" />
+            </Grid>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Border Style="{StaticResource BlockBorderStyle}">
-            <Canvas>
-                
-            </Canvas>
+            <ListBox ItemsSource="{Binding}">
+            </ListBox>
         </Border>
     </Grid>
 </UserControl>
