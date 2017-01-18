@@ -33,6 +33,12 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
+                <MenuItem Header="_Delete">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Delete48x48.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <Separator />
                 <MenuItem Header="E_xit" 
                           Command="{Binding ExitCommand}"/>
             </MenuItem>
@@ -55,6 +61,15 @@
                     ToolTip="Edit the selected item">
                 <Button.Content>
                     <Image Source="Images/DataEdit48x48.png"
+                           Width="24"
+                           Height="24" />
+                </Button.Content>
+            </Button>
+            <Separator />
+            <Button Command="{Binding Edit}"
+                    ToolTip="Delete the selected item">
+                <Button.Content>
+                    <Image Source="Images/Delete48x48.png"
                            Width="24"
                            Height="24" />
                 </Button.Content>

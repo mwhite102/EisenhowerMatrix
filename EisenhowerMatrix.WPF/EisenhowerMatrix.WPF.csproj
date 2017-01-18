@@ -210,6 +210,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>EisenhowerMatrix.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\Delete48x48.png" />
     <Resource Include="Images\DataEdit48x48.png" />
     <Resource Include="Images\AddNew48x48.png" />
   </ItemGroup>
