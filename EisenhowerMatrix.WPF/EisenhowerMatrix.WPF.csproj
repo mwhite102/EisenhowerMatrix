@@ -124,6 +124,9 @@
     <Compile Include="DataAccess\Quadrant.cs">
       <DependentUpon>EisenhowerMatrixDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\MatrixItemProperties.xaml.cs">
+      <DependentUpon>MatrixItemProperties.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Models\MatrixTaskModel.cs" />
     <Compile Include="UserControls\Matrix.xaml.cs">
       <DependentUpon>Matrix.xaml</DependentUpon>
@@ -133,6 +136,10 @@
     </Compile>
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Page Include="Dialogs\MatrixItemProperties.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
