@@ -73,21 +73,29 @@
         <!--Important / Urgent-->
         <local:MatrixBlock Grid.Column="1" 
                            Grid.Row="1"
-                           DataContext="{Binding ImportantAndUrgentMatrixTasks}"/>
+                           x:Name="ImportantAndUrgentMatrixBlock"
+                           DataContext="{Binding ImportantAndUrgentMatrixTasks}" 
+                           SelectionChanged="MatrixBlock_SelectionChanged" />
         
         <!--Important / Not Urgent-->
         <local:MatrixBlock Grid.Column="2"
                            Grid.Row="1"
-                           DataContext="{Binding ImportantAndNotUrgentMatrixTasks}"/>
+                           x:Name="ImportantAndNotUrgentMatrixBlock"
+                           DataContext="{Binding ImportantAndNotUrgentMatrixTasks}"
+                           SelectionChanged="MatrixBlock_SelectionChanged" />
 
         <!--Not Important / Urgent-->
         <local:MatrixBlock Grid.Column="1"
                            Grid.Row="2"
-                           DataContext="{Binding NotImportantAndUrgentMatrixTasks}"/>
+                           x:Name="NotImportantAndUrgentMatrixBlock"
+                           DataContext="{Binding NotImportantAndUrgentMatrixTasks}"
+                           SelectionChanged="MatrixBlock_SelectionChanged" />
 
         <!--Not Important / Not Urgent-->
         <local:MatrixBlock Grid.Column="2"
                            Grid.Row="2"
-                           DataContext="{Binding NotImportantAndNotUrgentMatrixTasks}" />
+                           x:Name="NotImportantAndNotUrgentMatrixBlock"
+                           DataContext="{Binding NotImportantAndNotUrgentMatrixTasks}"
+                           SelectionChanged="MatrixBlock_SelectionChanged" />
     </Grid>
 </UserControl>

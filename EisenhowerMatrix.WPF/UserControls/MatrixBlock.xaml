@@ -35,7 +35,9 @@
     </UserControl.Resources>
     <Grid>
         <Border Style="{StaticResource BlockBorderStyle}">
-            <ListBox ItemsSource="{Binding}">
+            <ListBox ItemsSource="{Binding}"
+                     x:Name="MatrixBlock_ListBox"
+                     SelectionChanged="MatrixBlock_ListBox_SelectionChanged">
             </ListBox>
         </Border>
     </Grid>
