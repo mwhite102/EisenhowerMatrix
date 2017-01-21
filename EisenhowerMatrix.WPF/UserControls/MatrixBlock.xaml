@@ -19,7 +19,7 @@
         </Style>
 
         <!--DataTemplate for MatrixTask-->
-        <DataTemplate DataType="{x:Type models:MatrixTaskModel}">
+        <DataTemplate DataType="{x:Type models:MatrixTaskItemModel}">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="Auto" />

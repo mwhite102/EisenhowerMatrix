@@ -50,41 +50,57 @@ namespace EisenhowerMatrix.WPF.ViewModel
             LoadMatrixTask();
         }
 
-        public ObservableCollection<MatrixTaskModel> ImportantAndNotUrgentMatrixTask { get; set; }
+        /// <summary>
+        /// Gets the ImportantAndNotUrgentMatrixTask Collection
+        /// </summary>
+        public ObservableCollection<MatrixTaskItemModel> ImportantAndNotUrgentMatrixTasks { get; private set; }
 
-        public ObservableCollection<MatrixTaskModel> ImportantAndUrgentMatrixTask { get; set; }
+        /// <summary>
+        /// Gets the ImportantAndUrgentMatrixTask Collection
+        /// </summary>
+        public ObservableCollection<MatrixTaskItemModel> ImportantAndUrgentMatrixTasks { get; private set; }
 
-        public ObservableCollection<MatrixTaskModel> NotImportantAndNotUrgentMatrixTask { get; set; }
+        /// <summary>
+        /// Gets the NotImportantAndNotUrgentMatrixTask Collection
+        /// </summary>
+        public ObservableCollection<MatrixTaskItemModel> NotImportantAndNotUrgentMatrixTasks { get; private set; }
 
-        public ObservableCollection<MatrixTaskModel> NotImportantAndUrgentMatrixTask { get; set; }
+        /// <summary>
+        /// Get the NotImportantAndUrgentMatrixTask Collection
+        /// </summary>
+        public ObservableCollection<MatrixTaskItemModel> NotImportantAndUrgentMatrixTasks { get; private set; }
 
         #region Private Methods
 
         private void Init()
         {
             // Create the Task ObservableCollections
-            ImportantAndNotUrgentMatrixTask = new ObservableCollection<MatrixTaskModel>();
-            ImportantAndUrgentMatrixTask = new ObservableCollection<MatrixTaskModel>();
-            NotImportantAndNotUrgentMatrixTask = new ObservableCollection<MatrixTaskModel>();
-            NotImportantAndUrgentMatrixTask = new ObservableCollection<MatrixTaskModel>();
+            ImportantAndNotUrgentMatrixTasks = new ObservableCollection<MatrixTaskItemModel>();
+            ImportantAndUrgentMatrixTasks = new ObservableCollection<MatrixTaskItemModel>();
+            NotImportantAndNotUrgentMatrixTasks = new ObservableCollection<MatrixTaskItemModel>();
+            NotImportantAndUrgentMatrixTasks = new ObservableCollection<MatrixTaskItemModel>();
         }
 
         private void LoadMatrixTask()
         {
-            LoadQuardrant(ImportantAndNotUrgentMatrixTask, IMPORTANT_AND_NOT_URGENT_QUADRANT_ID);
-            LoadQuardrant(ImportantAndUrgentMatrixTask, IMPORTANT_AND_URGENT_QUADRANT_ID);
-            LoadQuardrant(NotImportantAndNotUrgentMatrixTask, NOT_IMPORTANT_AND_NOT_URGENT_QUADRANT_ID);
-            LoadQuardrant(NotImportantAndUrgentMatrixTask, NOT_IMPORTANT_AND_URGENT_QUADRANT_ID);
+            LoadQuardrant(ImportantAndNotUrgentMatrixTasks, IMPORTANT_AND_NOT_URGENT_QUADRANT_ID);
+            LoadQuardrant(ImportantAndUrgentMatrixTasks, IMPORTANT_AND_URGENT_QUADRANT_ID);
+            LoadQuardrant(NotImportantAndNotUrgentMatrixTasks, NOT_IMPORTANT_AND_NOT_URGENT_QUADRANT_ID);
+            LoadQuardrant(NotImportantAndUrgentMatrixTasks, NOT_IMPORTANT_AND_URGENT_QUADRANT_ID);
         }        
         
-        private void LoadQuardrant(ObservableCollection<MatrixTaskModel> collection, int quadrantId)
+        private void LoadQuardrant(ObservableCollection<MatrixTaskItemModel> collection, int quadrantId)
         {
             if (collection.Count > 0)
                 collection.Clear();
 
             foreach(var v in _DataService.GetMatrixTasksByQuadrant(quadrantId))
             {
-                collection.Add(new MatrixTaskModel(v));
+                collection.Add(new MatrixTaskItemModel()
+                {
+                    Description = v.Description,
+                    MatrixTaskId = v.MatrixTaskId
+                });
             }
         }
 

@@ -127,6 +127,7 @@
     <Compile Include="Dialogs\MatrixItemProperties.xaml.cs">
       <DependentUpon>MatrixItemProperties.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\MatrixTaskItemModel.cs" />
     <Compile Include="Models\MatrixTaskModel.cs" />
     <Compile Include="UserControls\Matrix.xaml.cs">
       <DependentUpon>Matrix.xaml</DependentUpon>
