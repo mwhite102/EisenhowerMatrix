@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace EisenhowerMatrix.WPF.DataAccess
@@ -14,6 +15,24 @@ namespace EisenhowerMatrix.WPF.DataAccess
         public DataService(EisenhowerMatrixEntities eisenhowerMatrixEntities)
         {
             _Context = eisenhowerMatrixEntities;
+        }
+
+
+        /// <summary>
+        /// Deletes a MatrixTask
+        /// </summary>
+        /// <returns></returns>
+        public bool DeleteMatrixTask(int matrixTaskId)
+        {
+            bool result = false;
+            MatrixTask matrixTask = this.GetMatrixTaskById(matrixTaskId);
+            if (matrixTask != null)
+            {
+                _Context.MatrixTasks.Remove(matrixTask);
+                result = true;
+                _Context.SaveChanges();
+            }
+            return result;
         }
 
         /// <summary>
@@ -69,5 +88,7 @@ namespace EisenhowerMatrix.WPF.DataAccess
         {
             return _Context.SaveChanges();
         }
+
+        
     }
 }

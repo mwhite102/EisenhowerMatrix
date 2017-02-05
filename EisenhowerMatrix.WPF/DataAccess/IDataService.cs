@@ -4,6 +4,8 @@ namespace EisenhowerMatrix.WPF.DataAccess
 {
     public interface IDataService
     {
+        bool DeleteMatrixTask(int matrixTaskId);
+
         List<Quadrant> GetQuadrants();
 
         MatrixTask GetMatrixTaskById(int matrixTaskId);

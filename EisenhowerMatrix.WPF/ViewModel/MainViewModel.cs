@@ -136,6 +136,15 @@ namespace EisenhowerMatrix.WPF.ViewModel
             MatrixTaskPropertiesViewModel = new MatrixTaskPropertiesViewModel(matrixTask, _DataService);
         }
 
+        private void DoDelete()
+        {
+            if (_DataService.DeleteMatrixTask(SelectedMatrixTaskItemModel.MatrixTaskId))
+            {
+                SelectedMatrixTaskItemModel = null;
+                LoadMatrixTask();
+            }
+        }
+
         #endregion
 
         #region Commands
@@ -204,6 +213,28 @@ namespace EisenhowerMatrix.WPF.ViewModel
         {
             MatrixTask matrixTask = _DataService.GetMatrixTaskById(_SelectedMatrixTaskItemModel.MatrixTaskId);
             OpenMatrixTaskProperties(matrixTask);
+        }
+
+        private ICommand _DeleteTaskCommand;
+
+        public ICommand DeleteTaskCommand
+        {
+            get
+            {
+                if (_DeleteTaskCommand == null)
+                    _DeleteTaskCommand = new RelayCommand(DeleteTaskCommandExecute, DeleteTaskCommandCanExecute);
+                return _DeleteTaskCommand;
+            }
+        }
+
+        private void DeleteTaskCommandExecute()
+        {
+            DoDelete();
+        }
+
+        private bool DeleteTaskCommandCanExecute()
+        {
+            return _SelectedMatrixTaskItemModel != null;
         }
 
         #endregion

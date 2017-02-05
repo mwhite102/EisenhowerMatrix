@@ -64,7 +64,8 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="_Delete">
+                <MenuItem Header="_Delete"
+                          Command="{Binding DeleteTaskCommand}">
                     <MenuItem.Icon>
                         <Image Source="Images/Delete48x48.png" />
                     </MenuItem.Icon>

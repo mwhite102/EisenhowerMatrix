@@ -10,7 +10,7 @@
              d:DesignWidth="300">
 
     <UserControl.Style>
-        <!--Fades in the control when Visiblity changes-->
+        <!--Fades in the control when Visibility changes-->
         <Style TargetType="{x:Type UserControl}">
             <Style.Triggers>
                 <Trigger Property="Visibility"
