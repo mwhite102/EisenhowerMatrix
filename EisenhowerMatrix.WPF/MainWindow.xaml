@@ -37,6 +37,8 @@
         <KeyBinding Command="{Binding NewTaskCommand}"
                     Key="N"
                     Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding DeleteTaskCommand}"
+                    Key="Delete" />
     </Window.InputBindings>
 
     <Grid>

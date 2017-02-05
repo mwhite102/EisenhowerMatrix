@@ -21,12 +21,6 @@
         <!--DataTemplate for MatrixTask-->
         <DataTemplate DataType="{x:Type models:MatrixTaskItemModel}">
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <CheckBox Grid.Column="0"
-                          Margin="3" />
                 <TextBlock Grid.Column="1"
                            Margin="3"
                            Text="{Binding Description}" />
