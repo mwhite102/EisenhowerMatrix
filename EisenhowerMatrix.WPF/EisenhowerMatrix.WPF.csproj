@@ -101,6 +101,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Behaviors\DoubleClickBehavior.cs" />
     <Compile Include="DataAccess\DataService.cs" />
     <Compile Include="DataAccess\EisenhowerMatrixDataModel.Context.cs">
       <AutoGen>True</AutoGen>

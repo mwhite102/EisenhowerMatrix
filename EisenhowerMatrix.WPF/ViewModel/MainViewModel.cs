@@ -201,7 +201,6 @@ namespace EisenhowerMatrix.WPF.ViewModel
 
                 return _EditTaskCommand;
             }
-              
         }
 
         private bool EditTaskCommandCanExecute()
