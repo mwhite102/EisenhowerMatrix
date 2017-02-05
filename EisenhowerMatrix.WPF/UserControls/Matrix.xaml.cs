@@ -1,5 +1,5 @@
 ﻿using EisenhowerMatrix.WPF.Models;
-using System.Windows;
+using EisenhowerMatrix.WPF.ViewModel;
 using System.Windows.Controls;
 
 namespace EisenhowerMatrix.WPF.UserControls
@@ -9,19 +9,6 @@ namespace EisenhowerMatrix.WPF.UserControls
     /// </summary>
     public partial class Matrix : UserControl
     {
-
-        /// <summary>
-        /// The selected MatrixTaskItemModel in the Matrix
-        /// </summary>
-        public MatrixTaskItemModel SelectedMatrixTaskItemModel
-        {
-            get { return (MatrixTaskItemModel)GetValue(SelectedMatrixTaskItemModelProperty); }
-            set { SetValue(SelectedMatrixTaskItemModelProperty, value); }
-        }
-
-        public static readonly DependencyProperty SelectedMatrixTaskItemModelProperty =
-            DependencyProperty.Register("SelectedMatrixTaskItemModel", typeof(MatrixTaskItemModel), typeof(Matrix), new PropertyMetadata(null));
-
         public Matrix()
         {
             InitializeComponent();
@@ -63,8 +50,12 @@ namespace EisenhowerMatrix.WPF.UserControls
             }
 
             // Set the SelectedMatrixTaskItemModel value
-            SelectedMatrixTaskItemModel = e.AddedItems[0] as MatrixTaskItemModel;
-
+            MainViewModel viewModel = this.DataContext as MainViewModel;
+            if (viewModel != null)
+            {
+                viewModel.SelectedMatrixTaskItemModel = e.AddedItems[0] as MatrixTaskItemModel;
+            }
+            
             e.Handled = true;
         }
     }

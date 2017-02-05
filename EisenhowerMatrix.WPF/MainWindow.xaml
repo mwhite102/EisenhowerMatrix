@@ -4,13 +4,41 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:EisenhowerMatrix.WPF"
         xmlns:UserControls="clr-namespace:EisenhowerMatrix.WPF.UserControls"
+        xmlns:ValueConverters="clr-namespace:EisenhowerMatrix.WPF.ValueConverters"
         x:Class="EisenhowerMatrix.WPF.MainWindow"
         mc:Ignorable="d"
         Title="Eisenhower Matrix"
         Height="800"
-        Width="800"
-        DataContext="{Binding Source={StaticResource Locator}, Path=Main}">
-    
+        Width="800">
+
+    <Window.Resources>
+
+        <ValueConverters:ObjectNullToVisibilityConverter x:Key="ObjectNullToVisibilityConverter" />
+        <!--Style to make the toolbar button appear grayed out when disabled-->
+        <Style TargetType="{x:Type Image}"
+               x:Key="toolbarImageStyle">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding IsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Button}}}"
+                             Value="False">
+                    <Setter Property="Opacity"
+                            Value="0.25" />
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
+    </Window.Resources>
+
+    <Window.DataContext>
+        <Binding Path="Main"
+                 Source="{StaticResource Locator}" />
+    </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Command="{Binding NewTaskCommand}"
+                    Key="N"
+                    Modifiers="Ctrl" />
+    </Window.InputBindings>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -22,12 +50,15 @@
         <!--Main Menu-->
         <Menu Grid.Row="0">
             <MenuItem Header="_File">
-                <MenuItem Header="_New">
+                <MenuItem Header="_New"
+                          Command="{Binding NewTaskCommand}"
+                          InputGestureText="CTRL+N">
                     <MenuItem.Icon>
                         <Image Source="Images/AddNew48x48.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="_Edit">
+                <MenuItem Header="_Edit"
+                          Command="{Binding EditTaskCommand}">
                     <MenuItem.Icon>
                         <Image Source="Images/DataEdit48x48.png" />
                     </MenuItem.Icon>
@@ -39,45 +70,42 @@
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="E_xit" 
-                          Command="{Binding ExitCommand}"/>
+                <MenuItem Header="E_xit"
+                          Command="{Binding ExitCommand}" />
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" />
             </MenuItem>
         </Menu>
-        
+
         <!--Toolbar-->
         <ToolBar Grid.Row="1">
-            <Button Command="{Binding New}"
+            <Button Command="{Binding NewTaskCommand}"
                     ToolTip="Add a new item to the matrix">
-                <Button.Content>
-                    <Image Source="Images/AddNew48x48.png" 
-                           Width="24" 
-                           Height="24"/>
-                </Button.Content>
+                <Image Source="Images/AddNew48x48.png"
+                       Width="24"
+                       Height="24" />
             </Button>
-            <Button Command="{Binding Edit}"
+            <Button Command="{Binding EditTaskCommand}"
                     ToolTip="Edit the selected item">
-                <Button.Content>
-                    <Image Source="Images/DataEdit48x48.png"
-                           Width="24"
-                           Height="24" />
-                </Button.Content>
+                <Image Source="Images/DataEdit48x48.png"
+                       Width="24"
+                       Height="24"
+                       Style="{StaticResource toolbarImageStyle}" />
             </Button>
             <Separator />
-            <Button Command="{Binding Edit}"
+            <Button Command="{Binding DeleteTaskCommand}"
                     ToolTip="Delete the selected item">
-                <Button.Content>
-                    <Image Source="Images/Delete48x48.png"
-                           Width="24"
-                           Height="24" />
-                </Button.Content>
+                <Image Source="Images/Delete48x48.png"
+                       Width="24"
+                       Height="24"
+                       Style="{StaticResource toolbarImageStyle}" />
             </Button>
         </ToolBar>
 
         <!--Matrix Control-->
-        <Border Grid.Row="2" Margin="5">
+        <Border Grid.Row="2"
+                Margin="5">
             <UserControls:Matrix Grid.Row="1" />
         </Border>
 
@@ -87,6 +115,12 @@
                 <TextBlock Text="Status Bar Text" />
             </StatusBarItem>
         </StatusBar>
+
+        <!--The Matrix Item Properties Overlay-->
+        <UserControls:MatrixItemProperties Grid.Row="1"
+                                           Grid.RowSpan="2"
+                                           Visibility="{Binding DataContext.MatrixTaskPropertiesViewModel, Converter={StaticResource ObjectNullToVisibilityConverter}, Mode=OneWay, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type local:MainWindow}}, FallbackValue=Hidden}"
+                                           DataContext="{Binding MatrixTaskPropertiesViewModel}" />
 
     </Grid>
 </Window>

@@ -13,6 +13,7 @@
 */
 
 using EisenhowerMatrix.WPF.DataAccess;
+using EisenhowerMatrix.WPF.DialogService;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Ioc;
 using Microsoft.Practices.ServiceLocation;
@@ -32,20 +33,10 @@ namespace EisenhowerMatrix.WPF.ViewModel
         {
             ServiceLocator.SetLocatorProvider(() => SimpleIoc.Default);
 
-            ////if (ViewModelBase.IsInDesignModeStatic)
-            ////{
-            ////    // Create design time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DesignDataService>();
-            ////}
-            ////else
-            ////{
-            ////    // Create run time view services and models
-            ////    SimpleIoc.Default.Register<IDataService, DataService>();
-            ////}
-
             SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<IDataService, DataService>();
+            SimpleIoc.Default.Register<IMatrixDialogService, MatrixDialogService>();
             SimpleIoc.Default.Register<EisenhowerMatrixEntities>();
+            SimpleIoc.Default.Register<IDataService, DataService>();
         }
 
         public MainViewModel Main

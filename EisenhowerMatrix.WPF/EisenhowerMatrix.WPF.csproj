@@ -124,23 +124,23 @@
     <Compile Include="DataAccess\Quadrant.cs">
       <DependentUpon>EisenhowerMatrixDataModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Dialogs\MatrixItemProperties.xaml.cs">
-      <DependentUpon>MatrixItemProperties.xaml</DependentUpon>
-    </Compile>
+    <Compile Include="DialogService\IMatrixDialogService.cs" />
+    <Compile Include="DialogService\MatrixDialogService.cs" />
+    <Compile Include="Messages\EditResultMessage.cs" />
     <Compile Include="Models\MatrixTaskItemModel.cs" />
-    <Compile Include="Models\MatrixTaskModel.cs" />
     <Compile Include="UserControls\Matrix.xaml.cs">
       <DependentUpon>Matrix.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\MatrixBlock.xaml.cs">
       <DependentUpon>MatrixBlock.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\MatrixItemProperties.xaml.cs">
+      <DependentUpon>MatrixItemProperties.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ValueConverters\ObjectNullToVisibilityConverter.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MatrixTaskPropertiesViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Page Include="Dialogs\MatrixItemProperties.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -158,6 +158,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\MatrixBlock.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\MatrixItemProperties.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
