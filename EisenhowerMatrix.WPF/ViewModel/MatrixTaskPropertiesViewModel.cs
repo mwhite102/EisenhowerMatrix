@@ -205,7 +205,7 @@ namespace EisenhowerMatrix.WPF.ViewModel
 
         private bool SaveCommandCanExecute()
         {
-            return true;
+            return IsValid();
         }
 
         private void SaveCommandExecute()
@@ -249,6 +249,23 @@ namespace EisenhowerMatrix.WPF.ViewModel
 
                 return result;
             }
+        }
+
+        string[] FieldsToValidate = new string[]
+        {
+            "Description", "QuadrantId"
+        };
+
+        private bool IsValid()
+        {
+            foreach(var s in FieldsToValidate)
+            {
+                if (!string.IsNullOrEmpty(this[s]))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
         #endregion        
