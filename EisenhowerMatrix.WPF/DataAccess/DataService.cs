@@ -8,6 +8,8 @@ namespace EisenhowerMatrix.WPF.DataAccess
     {
         private EisenhowerMatrixEntities _Context;
 
+        private CustomStack<MatrixTask> _UndoDeleteStack = new CustomStack<MatrixTask>(100);
+
         /// <summary>
         /// DataService Constructor
         /// </summary>
@@ -17,17 +19,35 @@ namespace EisenhowerMatrix.WPF.DataAccess
             _Context = eisenhowerMatrixEntities;
         }
 
+        #region Public Properties
+
+        /// <summary>
+        /// Gets the number of items that can be undeleted
+        /// </summary>
+        public int UndoDeleteCount
+        {
+            get
+            {
+                return _UndoDeleteStack.Count;
+            }
+        }
+
+        #endregion
+        
+        #region Public Mtehods
 
         /// <summary>
         /// Deletes a MatrixTask
         /// </summary>
-        /// <returns></returns>
+        /// <returns>True if deleted, false if not</returns>
         public bool DeleteMatrixTask(int matrixTaskId)
         {
             bool result = false;
             MatrixTask matrixTask = this.GetMatrixTaskById(matrixTaskId);
             if (matrixTask != null)
             {
+                // Push the item onto the Undo Stack
+                _UndoDeleteStack.Push(matrixTask);
                 _Context.MatrixTasks.Remove(matrixTask);
                 result = true;
                 _Context.SaveChanges();
@@ -79,7 +99,7 @@ namespace EisenhowerMatrix.WPF.DataAccess
         {
             return new MatrixTask();
         }
-        
+
         /// <summary>
         /// Save any changes to the underlying Database
         /// </summary>
@@ -87,8 +107,37 @@ namespace EisenhowerMatrix.WPF.DataAccess
         public int SaveChanges()
         {
             return _Context.SaveChanges();
+        } 
+
+        public bool UndoDelete()
+        {
+            bool result = false;
+
+            if (UndoDeleteCount == 0)
+            {
+                throw new InvalidOperationException("There are no items to be undeleted");
+            }
+
+            // Get the item to be undeleted
+            MatrixTask matrixTask = _UndoDeleteStack.Pop();
+            // Set the MatrixTaskId to 0 (like a new item)
+            matrixTask.MatrixTaskId = 0;
+
+            _Context.MatrixTasks.Add(matrixTask);
+
+            try
+            {
+                this.SaveChanges();
+                result = true;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+            return result;
         }
 
-        
+        #endregion
     }
 }

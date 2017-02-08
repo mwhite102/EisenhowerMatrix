@@ -4,6 +4,8 @@ namespace EisenhowerMatrix.WPF.DataAccess
 {
     public interface IDataService
     {
+        int UndoDeleteCount { get; }
+
         bool DeleteMatrixTask(int matrixTaskId);
 
         List<Quadrant> GetQuadrants();
@@ -15,5 +17,7 @@ namespace EisenhowerMatrix.WPF.DataAccess
         MatrixTask NewMatrixTask();
 
         int SaveChanges();
+
+        bool UndoDelete();
     }
 }

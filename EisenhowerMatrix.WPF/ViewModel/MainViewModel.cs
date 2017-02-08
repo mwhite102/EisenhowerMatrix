@@ -145,6 +145,14 @@ namespace EisenhowerMatrix.WPF.ViewModel
             }
         }
 
+        private void DoUndoDelete()
+        {
+            if (_DataService.UndoDelete())
+            {
+                LoadMatrixTask();
+            }
+        }
+
         #endregion
 
         #region Commands
@@ -234,6 +242,28 @@ namespace EisenhowerMatrix.WPF.ViewModel
         private bool DeleteTaskCommandCanExecute()
         {
             return _SelectedMatrixTaskItemModel != null;
+        }
+
+        public ICommand _UndoDeleteTaskCommand;
+
+        public ICommand UndoDeleteTaskCommand
+        {
+            get
+            {
+                if (_UndoDeleteTaskCommand == null)
+                    _UndoDeleteTaskCommand = new RelayCommand(UndoDeleteTaskCommandExecute, UndoDeleteTaskCommandCanExecute);
+                return _UndoDeleteTaskCommand;
+            }
+        }
+
+        private bool UndoDeleteTaskCommandCanExecute()
+        {
+            return _DataService.UndoDeleteCount > 0;
+        }
+
+        private void UndoDeleteTaskCommandExecute()
+        {
+            DoUndoDelete();
         }
 
         #endregion

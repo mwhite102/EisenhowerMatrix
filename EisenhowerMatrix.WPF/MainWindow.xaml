@@ -39,6 +39,10 @@
                     Modifiers="Ctrl" />
         <KeyBinding Command="{Binding DeleteTaskCommand}"
                     Key="Delete" />
+        <KeyBinding Command="{Binding UndoDeleteTaskCommand}"
+                    Key="Z" Modifiers="Ctrl" />
+        <KeyBinding Command="{Binding EditTaskCommand}"
+                    Key="Return" />
     </Window.InputBindings>
 
     <Grid>
@@ -58,23 +62,35 @@
                     <MenuItem.Icon>
                         <Image Source="Images/AddNew48x48.png" />
                     </MenuItem.Icon>
-                </MenuItem>
-                <MenuItem Header="_Edit"
-                          Command="{Binding EditTaskCommand}">
+                </MenuItem>                
+                <Separator />
+                <MenuItem Header="E_xit"
+                          Command="{Binding ExitCommand}" />
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="P_roperties"
+                          Command="{Binding EditTaskCommand}"
+                          InputGestureText="Enter">
                     <MenuItem.Icon>
                         <Image Source="Images/DataEdit48x48.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
                 <MenuItem Header="_Delete"
-                          Command="{Binding DeleteTaskCommand}">
+                          Command="{Binding DeleteTaskCommand}"
+                          InputGestureText="Del">
                     <MenuItem.Icon>
                         <Image Source="Images/Delete48x48.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator />
-                <MenuItem Header="E_xit"
-                          Command="{Binding ExitCommand}" />
+                <MenuItem Header="_Undo Delete"
+                          Command="{Binding UndoDeleteTaskCommand}"
+                          InputGestureText="CTRL+Z">
+                    <MenuItem.Icon>
+                        <Image Source="Images/Undo48x48.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
             </MenuItem>
             <MenuItem Header="_Help">
                 <MenuItem Header="_About" />
@@ -100,6 +116,14 @@
             <Button Command="{Binding DeleteTaskCommand}"
                     ToolTip="Delete the selected item">
                 <Image Source="Images/Delete48x48.png"
+                       Width="24"
+                       Height="24"
+                       Style="{StaticResource toolbarImageStyle}" />
+            </Button>
+            <Separator />
+            <Button Command="{Binding UndoDeleteTaskCommand}"                    
+                    ToolTip="Undo delete">
+                <Image Source="Images/Undo48x48.png"
                        Width="24"
                        Height="24"
                        Style="{StaticResource toolbarImageStyle}" />
