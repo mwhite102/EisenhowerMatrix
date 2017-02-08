@@ -224,6 +224,8 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>EisenhowerMatrix.mdf</DependentUpon>
     </Content>
+    <Resource Include="Images\eisenhower50x50.jpg" />
+    <Resource Include="Images\eisenhower.ico" />
     <Resource Include="Images\Undo48x48.png" />
     <Resource Include="Images\Delete48x48.png" />
     <Resource Include="Images\DataEdit48x48.png" />
