@@ -1,10 +1,16 @@
-﻿namespace EisenhowerMatrix.WPF.DialogService
+﻿using EisenhowerMatrix.WPF.Windows;
+
+namespace EisenhowerMatrix.WPF.DialogService
 {
     class MatrixDialogService : IMatrixDialogService
     {
-        public bool ShowDialog()
+        public void ShowAboutBox()
         {
-            return true;
+            AboutBox aboutBox = new AboutBox();
+            aboutBox.Owner = App.Current.MainWindow;
+            aboutBox.WindowStartupLocation = System.Windows.WindowStartupLocation.CenterOwner;
+
+            aboutBox.ShowDialog();
         }
     }
 }

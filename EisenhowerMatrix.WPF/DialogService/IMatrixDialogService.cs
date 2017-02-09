@@ -3,6 +3,6 @@ namespace EisenhowerMatrix.WPF.DialogService
 {
     public interface IMatrixDialogService
     {
-        bool ShowDialog();
+        void ShowAboutBox();
     }
 }

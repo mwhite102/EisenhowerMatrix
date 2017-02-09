@@ -244,7 +244,7 @@ namespace EisenhowerMatrix.WPF.ViewModel
             return _SelectedMatrixTaskItemModel != null;
         }
 
-        public ICommand _UndoDeleteTaskCommand;
+        private ICommand _UndoDeleteTaskCommand;
 
         public ICommand UndoDeleteTaskCommand
         {
@@ -264,6 +264,24 @@ namespace EisenhowerMatrix.WPF.ViewModel
         private void UndoDeleteTaskCommandExecute()
         {
             DoUndoDelete();
+        }
+
+        private ICommand _ShowAboutBoxCommand;
+        
+        public ICommand ShowAboutBoxCommand
+        {
+            get
+            {
+                if (_ShowAboutBoxCommand == null)
+                    _ShowAboutBoxCommand = new RelayCommand(ShowAboutBoxCommandExecute);
+
+                return _ShowAboutBoxCommand;
+            }
+        }
+
+        private void ShowAboutBoxCommandExecute()
+        {
+            _DialogService.ShowAboutBox();
         }
 
         #endregion
