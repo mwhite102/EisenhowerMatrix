@@ -92,22 +92,6 @@ namespace EisenhowerMatrix.WPF.ViewModel
         }
 
         /// <summary>
-        /// Gets or sets the CompletedUTC
-        /// </summary>
-        public DateTime? CompletedUTC
-        {
-            get { return _MatrixTask.CompletedUTC; }
-            set
-            {
-                if (_MatrixTask.CompletedUTC != value)
-                {
-                    _MatrixTask.CompletedUTC = value;
-                    RaisePropertyChanged();
-                }
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the QuadrantId
         /// </summary>
         public int QuadrantId

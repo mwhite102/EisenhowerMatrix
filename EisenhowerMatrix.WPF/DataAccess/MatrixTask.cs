@@ -17,7 +17,6 @@ namespace EisenhowerMatrix.WPF.DataAccess
         public int MatrixTaskId { get; set; }
         public string Description { get; set; }
         public System.DateTime CreatedUTC { get; set; }
-        public Nullable<System.DateTime> CompletedUTC { get; set; }
         public int QuadrantId { get; set; }
     
         public virtual Quadrant Quadrant { get; set; }

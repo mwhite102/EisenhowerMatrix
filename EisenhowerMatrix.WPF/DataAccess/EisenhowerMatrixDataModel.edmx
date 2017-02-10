@@ -12,7 +12,6 @@
           <Property Name="MatrixTaskId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Description" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="CreatedUTC" Type="datetime" Nullable="false" />
-          <Property Name="CompletedUTC" Type="datetime" />
           <Property Name="QuadrantId" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Quadrant">
@@ -69,7 +68,6 @@
           <Property Name="MatrixTaskId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Description" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="CreatedUTC" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="CompletedUTC" Type="DateTime" Precision="3" />
           <Property Name="QuadrantId" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Quadrant" Relationship="EisenhowerMatrixModel.FK_MatrixTask_Quadrant" FromRole="MatrixTask" ToRole="Quadrant" />
         </EntityType>
@@ -103,7 +101,6 @@
             <EntityTypeMapping TypeName="EisenhowerMatrixModel.MatrixTask">
               <MappingFragment StoreEntitySet="MatrixTask">
                 <ScalarProperty Name="QuadrantId" ColumnName="QuadrantId" />
-                <ScalarProperty Name="CompletedUTC" ColumnName="CompletedUTC" />
                 <ScalarProperty Name="CreatedUTC" ColumnName="CreatedUTC" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
                 <ScalarProperty Name="MatrixTaskId" ColumnName="MatrixTaskId" />
