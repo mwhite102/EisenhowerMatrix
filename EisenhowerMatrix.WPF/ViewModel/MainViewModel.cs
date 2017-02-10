@@ -2,7 +2,6 @@ using EisenhowerMatrix.WPF.DataAccess;
 using EisenhowerMatrix.WPF.Models;
 using GalaSoft.MvvmLight;
 using System.Collections.ObjectModel;
-using System;
 using System.Windows.Input;
 using GalaSoft.MvvmLight.CommandWpf;
 using EisenhowerMatrix.WPF.DialogService;
